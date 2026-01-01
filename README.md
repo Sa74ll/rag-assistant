@@ -2,8 +2,6 @@
 
 A customizable RAG (Retrieval-Augmented Generation) assistant built with the Gemini File Search API. Upload your documents and get instant, grounded answers with citations.
 
-## Current Implementation
-This instance is configured as a **SAMA Regulations Assistant** — a bilingual (Arabic/English) assistant for Saudi Central Bank regulations. It can be easily adapted for any document-based Q&A use case.
 
 ## Features
 - 🔍 **Semantic Search** — Find relevant information based on meaning, not just keywords
