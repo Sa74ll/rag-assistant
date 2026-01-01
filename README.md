@@ -4,7 +4,7 @@ A simple customer support chatbot built with the Gemini File Search API.
 
 This project demonstrates how to build a RAG (Retrieval-Augmented Generation) agent that can answer questions based on your document knowledge base.
 
-![Preview](preview.png)
+
 
 NOTE: This agent uses only semantic search. For some uses cases this works but in other cases you may also want a more advanced RAG strategy such as 
 
