@@ -1,15 +1,19 @@
-# TechGear Plus Customer Support Agent
+# RAG Document Assistant
 
-A simple customer support chatbot built with the Gemini File Search API.
+A customizable RAG (Retrieval-Augmented Generation) assistant built with the Gemini File Search API. Upload your documents and get instant, grounded answers with citations.
 
-This project demonstrates how to build a RAG (Retrieval-Augmented Generation) agent that can answer questions based on your document knowledge base.
+## Current Implementation
+This instance is configured as a **SAMA Regulations Assistant** — a bilingual (Arabic/English) assistant for Saudi Central Bank regulations. It can be easily adapted for any document-based Q&A use case.
 
+## Features
+- 🔍 **Semantic Search** — Find relevant information based on meaning, not just keywords
+- 📄 **Citation Support** — Answers include references to source documents
+- 💬 **Conversation Memory** — Follow-up questions understand context
+- 🌐 **Bilingual** — Supports Arabic and English responses
 
-
-NOTE: This agent uses only semantic search. For some uses cases this works but in other cases you may also want a more advanced RAG strategy such as 
-
-1. Reading the full referenced documents to avoid missing context
-2. Using a hybrid search strategy for keyword matching.
+> **Note:** This agent uses semantic search only. For advanced use cases, consider:
+> 1. Reading full referenced documents to avoid missing context
+> 2. Using a hybrid search strategy for keyword matching
 
 ## Quick Start
 
@@ -18,58 +22,62 @@ NOTE: This agent uses only semantic search. For some uses cases this works but i
 - Gemini AI API Key ([get one here](https://aistudio.google.com/app/apikey))
 
 ### 2. Installation
-
-```
+```bash
 uv sync
 ```
 
 ### 3. Setup Environment
-
-Create a `.env` file with your API key:
-
+Create a `.env` file:
 ```bash
-GEMINI_API_KEY="your-api-key-here"
-STORE_NAME="your-store-name-here"
+GEMINI_API_KEY=your-api-key-here
+STORE_NAME=your-store-name-here
 ```
 
-### 4. Create File Search Store
+### 4. Add Your Documents
+Place your PDF files in the `docs/` directory.
 
-Run the setup script to create a new store and upload documents to it:
-
+### 5. Create File Search Store
 ```bash
 uv run setup.py
 ```
-
 This will:
 - Create a file search store
-- Upload all PDFs from the `docs/` directory
+- Upload all PDFs from `docs/`
 - Run a sample query
 - Output the store name (save this for your `.env` file)
 
-### 5. Run the App Locally
-
+### 6. Run the App
 ```bash
-uv run streamlit run app.py
+uv run chainlit run app.py
+```
+The app will open at `http://localhost:8000`
+
+## Customization
+
+### Change the System Prompt
+Edit `app/agent.py` and modify `SYSTEM_PROMPT` to match your use case:
+
+```python
+SYSTEM_PROMPT = """
+Your custom instructions here...
+"""
 ```
 
-The app will open in your browser at `http://localhost:8501`
+### Change the Welcome Message
+Edit `app.py` and update the welcome message in `@cl.on_chat_start`.
 
 ## Project Structure
-
 ```
-03-gemini-files-api/
 ├── app/
-│   ├── agent.py              # FAQAgent class
+│   ├── agent.py              # RAG agent with system prompt
 │   └── services/
-│       ├── file_service.py   # File search operations
-│       └── store_service.py  # Store management
-├── docs/                     # Knowledge base PDFs
-├── app.py                    # Streamlit application
-├── setup.py                  # Setup script for creating stores
-├── pyproject.toml           # Project dependencies
+│       ├── file_service.py   # File upload/management
+│       └── store_service.py  # Store CRUD operations
+├── docs/                     # Your PDF documents
+├── app.py                    # Chainlit UI
+├── setup.py                  # Setup script
+└── pyproject.toml            # Dependencies
 ```
 
 ## API Reference
-
-See the official Gemini File Search API documentation:
-https://ai.google.dev/gemini-api/docs/file-search
+[Gemini File Search API Documentation](https://ai.google.dev/gemini-api/docs/file-search)
