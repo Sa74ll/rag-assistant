@@ -4,9 +4,9 @@ A customizable RAG (Retrieval-Augmented Generation) assistant built with the Gem
 
 
 ## Features
-- 🔍 **Semantic Search** — Find relevant information based on meaning, not just keywords
-- 📄 **Citation Support** — Answers include references to source documents
-- 💬 **Conversation Memory** — Follow-up questions understand context
+- 🔍 **Semantic Search** - Find relevant information based on meaning, not just keywords
+- 📄 **Citation Support** - Answers include references to source documents
+- 💬 **Conversation Memory** - Follow-up questions understand context
 
 > **Note:** This agent uses semantic search only. For advanced use cases, consider:
 > 1. Reading full referenced documents to avoid missing context
